@@ -95,7 +95,7 @@ export class ClientAddressStepComponent {
   }
 
   /**
-   * Edit Address
+   * Edit Address...
    * @param {any} address Address
    * @param {number} index Address index
    */
