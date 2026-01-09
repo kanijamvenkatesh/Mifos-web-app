@@ -7,7 +7,41 @@
 import env from './.env';
 
 // The `window.env` object is loaded in the `index.html` file
-const loadedEnv = window.env || {};
+//const loadedEnv = window.env || {};
+
+// Define the environment configuration
+const envConfig = {
+  fineractApiURL: 'http://localhost:8443',
+  fineractApiUrls: 'http://localhost:8443',
+  fineractPlatformTenantId: 'default',
+  fineractPlatformTenantIds: 'default',
+  allowServerSwitch: 'false',
+  allow_switching_backend_instance: false,
+  defaultLanguage: 'en-US',
+  supportedLanguages: 'cs-CS,de-DE,en-US,es-MX,fr-FR,it-IT,ko-KO,lt-LT,lv-LV,ne-NE,pt-PT,sw-SW',
+  displayBackEndInfo: 'true',
+  displayTenantSelector: 'true',
+  sessionIdleTimeout: 300000,
+  httpCacheEnabled: false,
+  oauthServerEnabled: false,
+  oidcServerEnabled: false,
+  minPasswordLength: 12,
+  preloadClients: true,
+  waitTimeForNotifications: 60,
+  waitTimeForCOBCatchUp: 30,
+  defaultCharDelimiter: ','
+};
+
+// Merge auto-generated env with custom config
+const mergedEnv = Object.assign({}, env, envConfig);
+
+// Set on window for compatibility
+if (typeof window !== 'undefined') {
+  (window as any).env = mergedEnv;
+}
+
+// The window.env object should now have all values
+const loadedEnv = (window as any).env || mergedEnv;
 
 export const environment = {
   production: false,

@@ -37,8 +37,8 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "node_modules/tinymce",
-                "output": "assets/tinymce"
+                "input": "src/environments",
+                "output": "/environments"
               }
             ],
             "styles": [
